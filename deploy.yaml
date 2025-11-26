@@ -18,19 +18,25 @@ spec:
       containers:
         - name: main
           image: nginx
+          volumeMounts:
+            - name: fs-cescom
+              mountPath: /home/ubuntu/webpages/cescom
           ports:
             - containerPort: 8000
-              #  envFrom:
-              # - configMapRef:
-              #  name: {{.Release.Name}}-frontend
-              # startupProbe:
-              # httpGet:
-              #path: /api/livez
-              #port: 3000
-              # livenessProbe:
-              #httpGet:
-              # path: /api/livez
-              #port: 3000
+            # envFrom:
+            # - configMapRef:
+            #     name: {{.Release.Name}}-frontend
+            # startupProbe:
+            #   httpGet:
+            #     path: /api/livez
+            #     port: 3000
+            # livenessProbe:
+            #   httpGet:
+            #     path: /api/livez
+            #     port: 3000
+          volumeMounts:
+            - name: fs-cescom
+              mountPath: /home/ubuntu/webpages/cescom
           resources:
             requests:
               cpu: 100m
@@ -38,3 +44,7 @@ spec:
             limits:
               cpu: 200m
               memory: 200Mi
+      volumes:
+        - name: fs-cescom
+          configMap:
+            name: cescom-configmap
