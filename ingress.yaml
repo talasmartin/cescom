@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cescom
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  ingressClassName: nginx
+#  tls:
+#    - hosts:
+#        - cescom.cz
+#      secretName: cescom.cz-tls
+  rules:
+    - host: cescom.cz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cescom
+                port:
+                  number: 80
