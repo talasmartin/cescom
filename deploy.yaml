@@ -41,7 +41,7 @@ spec:
             limits:
               cpu: 200m
               memory: 200Mi
-                #      volumes:
-                #      - name: fs-cescom
-                #      configMap:
-                #  name: cescom-configmap
+      volumes:
+        - name: fs-cescom
+          configMap:
+            name: cescom-configmap
