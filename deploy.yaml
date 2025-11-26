@@ -34,9 +34,6 @@ spec:
             #   httpGet:
             #     path: /api/livez
             #     port: 3000
-          volumeMounts:
-            - name: fs-cescom
-              mountPath: /home/ubuntu/webpages/cescom
           resources:
             requests:
               cpu: 100m
@@ -44,7 +41,7 @@ spec:
             limits:
               cpu: 200m
               memory: 200Mi
-      volumes:
-        - name: fs-cescom
-          configMap:
-            name: cescom-configmap
+                #      volumes:
+                #      - name: fs-cescom
+                #      configMap:
+                #  name: cescom-configmap
