@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cescom.cz
+  name: cescom
 spec:
   selector:
-    app: cescom.cz
+    app: cescom
   ports:
     - port: 80
-      #targetPort: 8000
+      targetPort: 8000

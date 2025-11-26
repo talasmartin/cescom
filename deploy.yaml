@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cescom.cz
+  name: cescom
 spec:
   revisionHistoryLimit: 0
   replicas: 2
   selector:
     matchLabels:
-      app: cescom.cz
+      app: cescom
   template:
     metadata:
       #annotations:
       # checksum/config: {{ include (print $.Template.BasePath "/frontend_cm.yml") . | sha256sum }}
       labels:
-        app: cescom.cz
+        app: cescom
     spec:
       containers:
         - name: main
