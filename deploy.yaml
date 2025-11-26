@@ -1,0 +1,41 @@
+#apiVersion: apps/v1
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: cescom
+spec:
+  revisionHistoryLimit: 0
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cescom
+  template:
+    metadata:
+      #annotations:
+      # checksum/config: {{ include (print $.Template.BasePath "/frontend_cm.yml") . | sha256sum }}
+      labels:
+        app: cescom
+    spec:
+      containers:
+        - name: main
+          image: nginx
+          ports:
+            - containerPort: 8000
+              #  envFrom:
+              # - configMapRef:
+              #  name: {{.Release.Name}}-frontend
+              # startupProbe:
+              # httpGet:
+              #path: /api/livez
+              #port: 3000
+              # livenessProbe:
+              #httpGet:
+              # path: /api/livez
+              #port: 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 200Mi
+            limits:
+              cpu: 200m
+              memory: 200Mi
